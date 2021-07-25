@@ -4,6 +4,7 @@ import com.fedejcs.spring.apirest.citasmedicas.app.app_citas_medicas.models.enti
 
 import org.springframework.data.repository.CrudRepository;
 
+
 public interface IAppointmentDAO extends CrudRepository< Appointment , Long >
 {
     
