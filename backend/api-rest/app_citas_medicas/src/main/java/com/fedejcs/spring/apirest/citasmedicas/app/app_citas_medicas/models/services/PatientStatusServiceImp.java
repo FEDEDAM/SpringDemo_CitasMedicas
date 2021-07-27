@@ -30,8 +30,8 @@ public class PatientStatusServiceImp implements IPatientStatusService
 
     @Override
     @Transactional
-    public void save(PatientStatus status) {
-        pantientStatusRepository.save(status);
+    public PatientStatus save(PatientStatus status) {
+        return pantientStatusRepository.save(status);
     }
 
     @Override

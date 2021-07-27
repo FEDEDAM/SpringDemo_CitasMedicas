@@ -10,7 +10,7 @@ public interface IPatientStatusService
 
     public PatientStatus findById ( Long id );
 
-    public void save ( PatientStatus status );
+    public PatientStatus save ( PatientStatus status );
 
     public void deleteById ( Long id );      
 }

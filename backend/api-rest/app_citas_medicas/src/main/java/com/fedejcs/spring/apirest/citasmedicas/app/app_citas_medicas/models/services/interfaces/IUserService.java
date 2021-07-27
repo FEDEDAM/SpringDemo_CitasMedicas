@@ -10,7 +10,7 @@ public interface IUserService
 
     public User findById ( Long id );
 
-    public void save ( User user );
+    public User save ( User user );
 
     public void deleteById ( Long id );
 }

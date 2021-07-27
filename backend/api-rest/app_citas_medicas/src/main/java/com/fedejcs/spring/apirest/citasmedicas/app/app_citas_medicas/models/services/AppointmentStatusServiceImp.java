@@ -25,8 +25,8 @@ public class AppointmentStatusServiceImp implements IAppointmentStatusService
     }
 
     @Override
-    public void save(AppointmentStatus status) {
-        appointmentStatusRepository.save( status );
+    public AppointmentStatus save(AppointmentStatus status) {
+        return appointmentStatusRepository.save( status );
     }
 
     @Override

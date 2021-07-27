@@ -10,7 +10,7 @@ public interface ISpecialityService
 
     public Speciality findById ( Long id );
 
-    public void save ( Speciality speciality );
+    public Speciality save ( Speciality speciality );
 
     public void deleteById ( Long id );    
 }

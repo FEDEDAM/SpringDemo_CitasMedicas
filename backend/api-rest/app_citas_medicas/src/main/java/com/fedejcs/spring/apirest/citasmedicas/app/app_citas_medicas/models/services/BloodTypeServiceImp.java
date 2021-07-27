@@ -24,8 +24,8 @@ public class BloodTypeServiceImp implements IBloodTypeService
     }
 
     @Override
-    public void save(BloodType bloodType) {
-        bloodTypeRepository.save( bloodType );
+    public BloodType save(BloodType bloodType) {
+        return bloodTypeRepository.save( bloodType );
     }
 
     @Override

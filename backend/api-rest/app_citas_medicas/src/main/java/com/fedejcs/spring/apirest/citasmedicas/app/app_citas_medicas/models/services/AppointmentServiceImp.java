@@ -32,9 +32,8 @@ public class AppointmentServiceImp implements IAppointmentService
 
     @Override
     @Transactional
-    public void save(Appointment appointment) {
-        appointmentRepository.save( appointment );
-        
+    public Appointment save(Appointment appointment) {
+        return appointmentRepository.save( appointment );
     }
 
     @Override

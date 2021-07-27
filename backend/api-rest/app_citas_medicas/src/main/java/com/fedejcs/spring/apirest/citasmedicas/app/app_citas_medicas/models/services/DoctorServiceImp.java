@@ -26,8 +26,8 @@ public class DoctorServiceImp implements IDoctorService
 
     @Override
     @Transactional
-    public void save(Doctor doctor) {
-        doctorRepository.save( doctor );
+    public Doctor save(Doctor doctor) {
+        return doctorRepository.save( doctor );
     }
 
     @Override

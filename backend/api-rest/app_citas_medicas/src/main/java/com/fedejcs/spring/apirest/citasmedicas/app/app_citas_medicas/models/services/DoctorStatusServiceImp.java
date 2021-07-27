@@ -24,8 +24,8 @@ public class DoctorStatusServiceImp implements IDoctorStatusService
     }
 
     @Override
-    public void save(DoctorStatus status) {
-        doctorStatusRepository.save( status );
+    public DoctorStatus save(DoctorStatus status) {
+        return doctorStatusRepository.save( status );
     }
 
     @Override

@@ -10,7 +10,7 @@ public interface IUserStatusService
 
     public UserStatus findById ( Long id );
 
-    public void save ( UserStatus status );
+    public UserStatus save ( UserStatus status );
 
     public void deleteById ( Long id );    
 }

@@ -10,7 +10,7 @@ public interface IDoctorStatusService
 
     public DoctorStatus findById ( Long id );
 
-    public void save ( DoctorStatus status );
+    public DoctorStatus save ( DoctorStatus status );
 
     public void deleteById ( Long id );  
 }

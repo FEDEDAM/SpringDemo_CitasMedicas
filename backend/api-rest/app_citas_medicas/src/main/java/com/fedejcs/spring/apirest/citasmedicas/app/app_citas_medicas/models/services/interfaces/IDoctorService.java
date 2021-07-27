@@ -10,7 +10,7 @@ public interface IDoctorService
 
     public Doctor findById ( Long id );
 
-    public void save ( Doctor doctor );
+    public Doctor save ( Doctor doctor );
 
     public void deleteById ( Long id );    
 }
