@@ -2,6 +2,10 @@ package com.fedejcs.spring.apirest.citasmedicas.app.app_citas_medicas.helpers;
 
 public class UrlsStatic 
 {
+    private UrlsStatic() {
+        throw new IllegalStateException("Utility class");
+    }
+
     /*===============================================================================*/
     /*============================= 1 URL BASIC METHODS =============================*/
     /*===============================================================================*/
@@ -33,12 +37,16 @@ public class UrlsStatic
     public static final String URL_BASE_PATIENT_STATUSES    = "/patient-statuses";
 
     /*===============================================================================*/
+    /*============================== 8 URL SPECIALITIES =============================*/
+    /*===============================================================================*/
+    public static final String URL_BASE_SPECIALITIES        = "/specialities";
+
+    /*===============================================================================*/
     /*================================== 8 URL USER =================================*/
     /*===============================================================================*/
     public static final String URL_BASE_USERS               = "/users";
     public static final String URL_BASE_USER_STATUSES       = "/user-statuses";
     public static final String URL_BASE_USER_TYPES          = "/user-types";
 
-    public static final String URL_BASE_SPECIALITIES = "/specialities";
     
 }

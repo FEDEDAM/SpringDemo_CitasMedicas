@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-AppCitasMedicasApplication<app_citas_medicas>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.fedejcs.spring.apirest.citasmedicas.app.app_citas_medicas.AppCitasMedicasApplication",
+            "projectName": "app_citas_medicas",
+            "args": ""
+        }
+    ]
+}

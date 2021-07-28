@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping( UrlsStatic.URL_BASE_BLOOD_TYPES )
+@RequestMapping(  UrlsStatic.URL_BASE_BLOOD_TYPES )
 public class BloodTypeController 
 {
     @Autowired
@@ -26,7 +26,7 @@ public class BloodTypeController
     /*=================== 1 QUERY METHODS ===================*/
     /*=======================================================*/
 
-    @GetMapping( path = UrlsStatic.URL_BASIC_OPTION_LIST )
+    @GetMapping( { "" , "/" , UrlsStatic.URL_BASIC_OPTION_LIST } )
     public List < BloodType > getBloodTypesList()
     {
         return bloodTypeService.findAll();

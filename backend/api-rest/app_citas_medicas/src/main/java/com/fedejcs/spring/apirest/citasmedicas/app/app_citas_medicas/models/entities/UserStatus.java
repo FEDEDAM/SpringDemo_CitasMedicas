@@ -1,6 +1,7 @@
 package com.fedejcs.spring.apirest.citasmedicas.app.app_citas_medicas.models.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -37,7 +38,7 @@ public class UserStatus implements Serializable
     @NotEmpty
     private String description;
 
-    @OneToMany( mappedBy = "users_status" , fetch = FetchType.LAZY , cascade = CascadeType.ALL )
+    @OneToMany( mappedBy = "status" , fetch = FetchType.LAZY , cascade = CascadeType.ALL )
     private List<User> users;
 
     @Column(name="create_at")
@@ -55,11 +56,12 @@ public class UserStatus implements Serializable
     @PreUpdate
     private void preUpdate(){modifiedAt = new Date();}
 
-    UserStatus status = new UserStatus();
-
     /*========================================================================================*/
     //------                   2) GETTERS , SETTERS & BUILDERS PATIENTS                 ------//
     /*========================================================================================*/
+    public UserStatus(){
+        users = new ArrayList<>();
+    }
 
     public Long getId() {return this.id;}
     public void setId(Long id) {this.id = id;}

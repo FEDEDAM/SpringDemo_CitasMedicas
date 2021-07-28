@@ -1,6 +1,7 @@
 package com.fedejcs.spring.apirest.citasmedicas.app.app_citas_medicas.models.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -38,7 +39,7 @@ public class UserType  implements Serializable
     @NotEmpty
     private String description;
 
-    @OneToMany( mappedBy = "users_type" , fetch = FetchType.LAZY , cascade = CascadeType.ALL )
+    @OneToMany( mappedBy = "type" , fetch = FetchType.LAZY , cascade = CascadeType.ALL )
     private List<User> users;
 
     @Column(name="create_at")
@@ -61,6 +62,9 @@ public class UserType  implements Serializable
     /*========================================================================================*/
     //------                   2) GETTERS , SETTERS & BUILDERS PATIENTS                 ------//
     /*========================================================================================*/
+    public UserType(){
+        users = new ArrayList<>();
+    }
 
     public Long getId() {return this.id;}
     public void setId(Long id) {this.id = id;}

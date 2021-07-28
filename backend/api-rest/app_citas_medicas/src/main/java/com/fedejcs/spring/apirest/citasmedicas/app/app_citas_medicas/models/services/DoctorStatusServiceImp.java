@@ -7,7 +7,9 @@ import com.fedejcs.spring.apirest.citasmedicas.app.app_citas_medicas.models.enti
 import com.fedejcs.spring.apirest.citasmedicas.app.app_citas_medicas.models.services.interfaces.IDoctorStatusService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class DoctorStatusServiceImp implements IDoctorStatusService
 {
     @Autowired

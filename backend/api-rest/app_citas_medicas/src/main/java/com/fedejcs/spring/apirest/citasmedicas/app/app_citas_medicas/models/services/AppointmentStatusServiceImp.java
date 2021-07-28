@@ -8,7 +8,9 @@ import com.fedejcs.spring.apirest.citasmedicas.app.app_citas_medicas.models.enti
 import com.fedejcs.spring.apirest.citasmedicas.app.app_citas_medicas.models.services.interfaces.IAppointmentStatusService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class AppointmentStatusServiceImp implements IAppointmentStatusService
 {
     @Autowired

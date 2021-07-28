@@ -26,7 +26,7 @@ public class UserStatusController
     /*=================== 1 QUERY METHODS ===================*/
     /*=======================================================*/
 
-    @GetMapping( path = UrlsStatic.URL_BASIC_OPTION_LIST )
+    @GetMapping( { "" , "/" , UrlsStatic.URL_BASIC_OPTION_LIST } )
     public List < UserStatus > getAppointmentsList()
     {
         return userStatusService.findAll();

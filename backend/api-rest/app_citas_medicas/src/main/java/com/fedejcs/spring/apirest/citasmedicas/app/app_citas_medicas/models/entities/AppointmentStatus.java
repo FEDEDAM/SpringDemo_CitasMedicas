@@ -1,6 +1,7 @@
 package com.fedejcs.spring.apirest.citasmedicas.app.app_citas_medicas.models.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -37,7 +38,7 @@ public class AppointmentStatus implements Serializable
     @NotEmpty
     private String description;
 
-    @OneToMany( mappedBy = "appointment_status" , fetch = FetchType.LAZY , cascade = CascadeType.ALL)
+    @OneToMany( mappedBy = "status" , fetch = FetchType.LAZY , cascade = CascadeType.ALL)
     private List<Appointment> appointments;
 
     @Temporal(TemporalType.DATE)
@@ -61,6 +62,9 @@ public class AppointmentStatus implements Serializable
     //------                 2) GETTERS , SETTERS & BUILDERS APPOINTMENTS               ------//
     /*========================================================================================*/
 
+    public AppointmentStatus(){
+        appointments = new ArrayList<>();
+    }
 
     public Long getId() {return this.id;}
     public void setId(Long id) {this.id = id;}

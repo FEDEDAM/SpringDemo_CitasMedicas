@@ -26,7 +26,7 @@ public class DoctorStatusController
     /*=================== 1 QUERY METHODS ===================*/
     /*=======================================================*/
 
-    @GetMapping( path = UrlsStatic.URL_BASIC_OPTION_LIST )
+    @GetMapping( { "" , "/" , UrlsStatic.URL_BASIC_OPTION_LIST } )
     public List < DoctorStatus > getDoctorsList()
     {
         return doctorStatusService.findAll();

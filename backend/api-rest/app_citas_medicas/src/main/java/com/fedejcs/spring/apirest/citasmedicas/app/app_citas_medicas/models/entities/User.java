@@ -88,6 +88,7 @@ public class User implements Serializable
     /*========================================================================================*/
     //------                   2) GETTERS , SETTERS & BUILDERS PATIENTS                 ------//
     /*========================================================================================*/
+    public User(){/* Empty constructor */}
 
     public Long getId() {return this.id;}
     public void setId(Long id) {this.id = id;}
