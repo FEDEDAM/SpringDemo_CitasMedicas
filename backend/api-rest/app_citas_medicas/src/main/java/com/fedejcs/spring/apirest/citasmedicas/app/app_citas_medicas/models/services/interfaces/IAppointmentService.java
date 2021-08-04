@@ -10,7 +10,7 @@ public interface IAppointmentService
 
     public Appointment findById ( Long id );
 
-    public void save ( Appointment appointment );
+    public Appointment save ( Appointment appointment );
 
     public void deleteById ( Long id );
 }

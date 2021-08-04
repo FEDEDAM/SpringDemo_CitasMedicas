@@ -30,8 +30,8 @@ public class SpecialityServiceImp implements ISpecialityService
 
     @Override
     @Transactional
-    public void save(Speciality speciality) {
-        specialityRepository.save(speciality);
+    public Speciality save(Speciality speciality) {
+        return specialityRepository.save(speciality);
     }
 
     @Override

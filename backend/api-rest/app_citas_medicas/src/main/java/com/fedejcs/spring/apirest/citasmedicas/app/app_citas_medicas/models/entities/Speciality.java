@@ -1,6 +1,7 @@
 package com.fedejcs.spring.apirest.citasmedicas.app.app_citas_medicas.models.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -35,12 +36,15 @@ public class Speciality implements Serializable
     private Long id;
 
     @NotEmpty
+    private String name;
+
+    @NotEmpty
     private String description;
 
-    @OneToMany( mappedBy = "specialities" , fetch = FetchType.LAZY , cascade = CascadeType.ALL )
+    @OneToMany( mappedBy = "speciality" , fetch = FetchType.LAZY , cascade = CascadeType.ALL )
     private List<Doctor> doctors;
 
-    @OneToMany( mappedBy = "specialities" , fetch = FetchType.LAZY , cascade = CascadeType.ALL )
+    @OneToMany( mappedBy = "speciality" , fetch = FetchType.LAZY , cascade = CascadeType.ALL )
     private List<Appointment> appointments;
 
     @Column(name="create_at")
@@ -63,11 +67,19 @@ public class Speciality implements Serializable
     //------                   2) GETTERS , SETTERS & BUILDERS PATIENTS                 ------//
     /*========================================================================================*/
 
+    public Speciality(){
+        appointments = new ArrayList<>();
+        doctors = new ArrayList<>();
+    }
+
     public Long getId() {return this.id;}
     public void setId(Long id) {this.id = id;}
     
     public Date getCreateAt() {return this.createAt;}
     public Date getModifiedAt() {return this.modifiedAt;}
+
+    public String getName() {return this.name;}
+    public void setName(String name) {this.name = name;}
 
     public String getDescription() {return this.description;}   
     public void setDescription(String description) {this.description = description;}

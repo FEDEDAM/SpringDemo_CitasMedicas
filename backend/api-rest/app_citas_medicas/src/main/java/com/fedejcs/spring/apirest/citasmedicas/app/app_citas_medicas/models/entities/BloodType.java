@@ -1,6 +1,7 @@
 package com.fedejcs.spring.apirest.citasmedicas.app.app_citas_medicas.models.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -37,7 +38,7 @@ public class BloodType implements Serializable
     @NotEmpty
     private String description;
 
-    @OneToMany( mappedBy = "blood_type"  , fetch = FetchType.LAZY , cascade = CascadeType.ALL )
+    @OneToMany( mappedBy = "bloodType"  , fetch = FetchType.LAZY , cascade = CascadeType.ALL )
     private List<User> users;
 
     @Column(name="create_at")
@@ -59,6 +60,10 @@ public class BloodType implements Serializable
     /*========================================================================================*/
     //------                   2) GETTERS , SETTERS & BUILDERS PATIENTS                 ------//
     /*========================================================================================*/
+
+    public BloodType(){
+        users = new ArrayList<>();
+    }
 
     public Long getId() {return this.id;}
     public void setId(Long id) {this.id = id;}

@@ -1,6 +1,7 @@
 package com.fedejcs.spring.apirest.citasmedicas.app.app_citas_medicas.models.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -35,10 +36,13 @@ public class DoctorStatus implements Serializable
     private Long id;
 
     @NotEmpty
+    private String name;
+
+    @NotEmpty
     private String description;
 
-    @OneToMany( mappedBy = "doctor_status" , fetch = FetchType.LAZY , cascade = CascadeType.ALL )
-    private List<Doctor> dotors;
+    @OneToMany( mappedBy = "status" , fetch = FetchType.LAZY , cascade = CascadeType.ALL )
+    private List<Doctor> doctors;
 
     @Column(name="create_at")
     @Temporal(TemporalType.TIMESTAMP)
@@ -59,6 +63,10 @@ public class DoctorStatus implements Serializable
     /*========================================================================================*/
     //------                   2) GETTERS , SETTERS & BUILDERS PATIENTS                 ------//
     /*========================================================================================*/
+    
+    public DoctorStatus(){
+        doctors = new ArrayList<>();
+    }
 
     public Long getId() {return this.id;}
     public void setId(Long id) {this.id = id;}
@@ -66,10 +74,13 @@ public class DoctorStatus implements Serializable
     public Date getCreateAt() {return this.createAt;}
     public Date getModifiedAt() {return this.modifiedAt;}
 
+    public String getName() {return this.name;}
+    public void setName(String name) {this.name = name;}
+
     public String getDescription() {return this.description;}   
     public void setDescription(String description) {this.description = description;}
 
-    public List<Doctor> getDotors() {return this.dotors;}
-    public void setDotors(List<Doctor> dotors) {this.dotors = dotors;}
+    public List<Doctor> getDotors() {return this.doctors;}
+    public void setDotors(List<Doctor> doctors) {this.doctors = doctors;}
 
 }

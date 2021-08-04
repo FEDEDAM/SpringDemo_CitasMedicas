@@ -31,8 +31,8 @@ public class UserStatusServiceImp implements IUserStatusService
 
     @Override
     @Transactional
-    public void save(UserStatus status) {
-        userStatusRepository.save( status );
+    public UserStatus save(UserStatus status) {
+        return userStatusRepository.save( status );
     }
 
     @Override

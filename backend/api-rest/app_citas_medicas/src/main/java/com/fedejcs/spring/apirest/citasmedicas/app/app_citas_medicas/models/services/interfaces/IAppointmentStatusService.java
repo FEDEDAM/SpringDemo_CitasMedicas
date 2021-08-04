@@ -10,7 +10,7 @@ public interface IAppointmentStatusService
 
     public AppointmentStatus findById ( Long id );
 
-    public void save ( AppointmentStatus status );
+    public AppointmentStatus save ( AppointmentStatus status );
 
     public void deleteById ( Long id ); 
 }

@@ -6,8 +6,10 @@ import com.fedejcs.spring.apirest.citasmedicas.app.app_citas_medicas.models.dao.
 import com.fedejcs.spring.apirest.citasmedicas.app.app_citas_medicas.models.entities.Doctor;
 import com.fedejcs.spring.apirest.citasmedicas.app.app_citas_medicas.models.services.interfaces.IDoctorService;
 
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+@Service
 public class DoctorServiceImp implements IDoctorService
 {
     private IDoctorDAO doctorRepository;
@@ -26,8 +28,8 @@ public class DoctorServiceImp implements IDoctorService
 
     @Override
     @Transactional
-    public void save(Doctor doctor) {
-        doctorRepository.save( doctor );
+    public Doctor save(Doctor doctor) {
+        return doctorRepository.save( doctor );
     }
 
     @Override

@@ -10,7 +10,7 @@ public interface IBloodTypeService
 
     public BloodType findById ( Long id );
 
-    public void save ( BloodType bloodType );
+    public BloodType save ( BloodType bloodType );
 
     public void deleteById ( Long id ); 
 }

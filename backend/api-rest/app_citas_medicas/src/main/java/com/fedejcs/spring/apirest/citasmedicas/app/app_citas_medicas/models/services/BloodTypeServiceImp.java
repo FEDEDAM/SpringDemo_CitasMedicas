@@ -7,7 +7,9 @@ import com.fedejcs.spring.apirest.citasmedicas.app.app_citas_medicas.models.enti
 import com.fedejcs.spring.apirest.citasmedicas.app.app_citas_medicas.models.services.interfaces.IBloodTypeService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class BloodTypeServiceImp implements IBloodTypeService
 {
     @Autowired
@@ -24,8 +26,8 @@ public class BloodTypeServiceImp implements IBloodTypeService
     }
 
     @Override
-    public void save(BloodType bloodType) {
-        bloodTypeRepository.save( bloodType );
+    public BloodType save(BloodType bloodType) {
+        return bloodTypeRepository.save( bloodType );
     }
 
     @Override

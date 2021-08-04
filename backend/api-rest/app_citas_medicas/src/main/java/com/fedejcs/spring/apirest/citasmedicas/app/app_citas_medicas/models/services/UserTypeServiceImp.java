@@ -30,8 +30,8 @@ public class UserTypeServiceImp implements IUserTypeService
 
     @Override
     @Transactional
-    public void save(UserType type) {
-        userTypeRepository.save( type );
+    public UserType save(UserType type) {
+        return userTypeRepository.save( type );
     }
 
     @Override
