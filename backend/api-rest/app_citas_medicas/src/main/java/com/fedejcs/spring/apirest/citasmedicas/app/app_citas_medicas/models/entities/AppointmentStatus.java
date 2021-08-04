@@ -36,6 +36,9 @@ public class AppointmentStatus implements Serializable
     private Long id;
 
     @NotEmpty
+    private String name;
+
+    @NotEmpty
     private String description;
 
     @OneToMany( mappedBy = "status" , fetch = FetchType.LAZY , cascade = CascadeType.ALL)
@@ -68,6 +71,9 @@ public class AppointmentStatus implements Serializable
 
     public Long getId() {return this.id;}
     public void setId(Long id) {this.id = id;}
+
+    public String getName() {return this.name;}
+    public void setName(String name) {this.name = name;}
 
     public String getDescription() {return this.description;}
     public void setDescription(String description) {this.description = description;}

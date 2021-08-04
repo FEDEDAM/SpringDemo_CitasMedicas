@@ -37,6 +37,9 @@ public class UserType  implements Serializable
     private Long id;
 
     @NotEmpty
+    private String name;
+
+    @NotEmpty
     private String description;
 
     @OneToMany( mappedBy = "type" , fetch = FetchType.LAZY , cascade = CascadeType.ALL )
@@ -71,6 +74,9 @@ public class UserType  implements Serializable
     
     public Date getCreateAt() {return this.createAt;}
     public Date getModifiedAt() {return this.modifiedAt;}
+
+    public String getName() {return this.name;}
+    public void setName(String name) {this.name = name;}
 
     public String getDescription() {return this.description;}   
     public void setDescription(String description) {this.description = description;}    
