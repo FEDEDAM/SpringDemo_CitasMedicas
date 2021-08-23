@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface IUserDAO extends CrudRepository< User , Long >
 {
-    
+    public User findByNickOrEmail( String nickOrEmail );
 }
