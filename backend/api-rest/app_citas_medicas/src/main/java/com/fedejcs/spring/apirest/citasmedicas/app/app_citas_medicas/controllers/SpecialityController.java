@@ -2,7 +2,7 @@ package com.fedejcs.spring.apirest.citasmedicas.app.app_citas_medicas.controller
 
 import java.util.List;
 
-import com.fedejcs.spring.apirest.citasmedicas.app.app_citas_medicas.helpers.UrlsStatic;
+import com.fedejcs.spring.apirest.citasmedicas.app.app_citas_medicas.helpers.statics.UrlsStatic;
 import com.fedejcs.spring.apirest.citasmedicas.app.app_citas_medicas.models.entities.Speciality;
 import com.fedejcs.spring.apirest.citasmedicas.app.app_citas_medicas.models.services.interfaces.ISpecialityService;
 
