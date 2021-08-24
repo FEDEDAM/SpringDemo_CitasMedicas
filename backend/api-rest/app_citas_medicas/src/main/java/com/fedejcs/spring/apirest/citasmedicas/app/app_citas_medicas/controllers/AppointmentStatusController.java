@@ -58,8 +58,8 @@ public class AppointmentStatusController
             responseBody = new ResponseUtil( "" , "" , MsgTypesStatic.MSG_SUCCESS , status );
 
         }catch( DataAccessException dae ){
-            responseBody = new ResponseUtil( "Ups! Have some problem with the server access. Please, try again in few minutes." 
-                                            ,"Error in the system to get appointment status. Message: ".concat( dae.getMessage() ).concat( " - Cause: " ).concat( dae.getCause().toString() ) 
+            responseBody = new ResponseUtil( MsgTypesStatic.MSG_ERROR_DATA_ACCESS
+                                            ,"Error in the system to get appointment status. Message: ".concat( dae.getMessage() ).concat( " -  Cause:  " ).concat( dae.getCause().toString() ) 
                                             , MsgTypesStatic.MSG_ERROR 
                                         );
             return ResponseEntity.status( HttpStatus.INTERNAL_SERVER_ERROR ).body( responseBody );
@@ -84,8 +84,8 @@ public class AppointmentStatusController
             statusSaved = appointmentStatusService.save( appointmentStatus );
 
         }catch( DataAccessException dae ){
-            responseBody = new ResponseUtil( "Ups! Have some problem with the server access. Please, try again in few minutes." 
-                                            ,"Error in the system to create appointment status. Message: ".concat( dae.getMessage() ).concat( " - Cause: " ).concat( dae.getCause().toString() ) 
+            responseBody = new ResponseUtil( MsgTypesStatic.MSG_ERROR_DATA_ACCESS
+                                            ,"Error in the system to create appointment status. Message: ".concat( dae.getMessage() ).concat( "  - Cause:  " ).concat( dae.getCause().toString() ) 
                                             , MsgTypesStatic.MSG_ERROR 
                                         );
             return ResponseEntity.status( HttpStatus.INTERNAL_SERVER_ERROR ).body( responseBody );
@@ -108,7 +108,7 @@ public class AppointmentStatusController
             statusSaved = appointmentStatusService.save( appointmentStatus );
 
         }catch( DataAccessException dae ){
-            responseBody = new ResponseUtil( "Ups! Have some problem with the server access. Please, try again in few minutes." 
+            responseBody = new ResponseUtil( MsgTypesStatic.MSG_ERROR_DATA_ACCESS
                                             ,"Error in the system to update appointment status. Message: ".concat( dae.getMessage() ).concat( " - Cause: " ).concat( dae.getCause().toString() ) 
                                             , MsgTypesStatic.MSG_ERROR 
                                         );
@@ -131,7 +131,7 @@ public class AppointmentStatusController
             appointmentStatusService.deleteById( id );
 
         }catch( DataAccessException dae ){
-            responseBody = new ResponseUtil( "Ups! Have some problem with the server access. Please, try again in few minutes." 
+            responseBody = new ResponseUtil( MsgTypesStatic.MSG_ERROR_DATA_ACCESS
                                             ,"Error in the system to update appointment status. Message: ".concat( dae.getMessage() ).concat( " - Cause: " ).concat( dae.getCause().toString() ) 
                                             , MsgTypesStatic.MSG_ERROR 
                                         );
