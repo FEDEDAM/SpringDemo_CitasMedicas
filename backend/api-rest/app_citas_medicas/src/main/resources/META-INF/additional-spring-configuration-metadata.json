@@ -1,0 +1,12 @@
+{"properties": [
+  {
+    "name": "JWTProvider.secretKey",
+    "type": "java.lang.String",
+    "description": "Secret key to codify JSON Web Token'"
+  },
+  {
+    "name": "JWTProvider.expirationToken",
+    "type": "integer",
+    "description": "Caducity time to JSOM Web Token"
+  }
+]}

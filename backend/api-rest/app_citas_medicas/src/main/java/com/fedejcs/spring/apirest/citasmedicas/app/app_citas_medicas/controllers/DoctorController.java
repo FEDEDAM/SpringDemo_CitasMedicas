@@ -27,6 +27,7 @@ public class DoctorController
 {
     @Autowired
     private IDoctorService doctorService;
+    
 
     /*=======================================================*/
     /*=================== 1 QUERY METHODS ===================*/
@@ -56,8 +57,8 @@ public class DoctorController
             }
 
         }catch( DataAccessException dae ){
-            responseBody = new ResponseUtil( "Ups! Have some problem with the server access. Please, try again in few minutes." 
-                                            ,"Error in the system to get the doctor. Message: ".concat( dae.getMessage() ).concat( " - Cause: " ).concat( dae.getCause().toString() ) 
+            responseBody = new ResponseUtil(  MsgTypesStatic.MSG_ERROR_DATA_ACCESS
+                                            ,"Error in the system to get the doctor. Message: ".concat( dae.getMessage() ).concat( "  -  Cause: " ).concat( dae.getCause().toString() ) 
                                             , MsgTypesStatic.MSG_ERROR 
                                         );
             return ResponseEntity.status( HttpStatus.INTERNAL_SERVER_ERROR ).body( responseBody );
@@ -84,8 +85,8 @@ public class DoctorController
             doctorSaved = doctorService.save( doctor );
 
         }catch( DataAccessException dae ){
-            responseBody = new ResponseUtil( "Ups! Have some problem with the server access. Please, try again in few minutes." 
-                                            ,"Error in the system to create the doctor. Message: ".concat( dae.getMessage() ).concat( " - Cause: " ).concat( dae.getCause().toString() ) 
+            responseBody = new ResponseUtil( MsgTypesStatic.MSG_ERROR_DATA_ACCESS
+                                            ,"Error in the system to create the doctor. Message: ".concat( dae.getMessage() ).concat( "  -  Cause: " ).concat( dae.getCause().toString() ) 
                                             , MsgTypesStatic.MSG_ERROR 
                                         );
             return ResponseEntity.status( HttpStatus.INTERNAL_SERVER_ERROR ).body( responseBody );
@@ -107,7 +108,7 @@ public class DoctorController
             doctorSaved = doctorService.save( doctor );
 
         }catch( DataAccessException dae ){
-            responseBody = new ResponseUtil( "Ups! Have some problem with the server access. Please, try again in few minutes." 
+            responseBody = new ResponseUtil( MsgTypesStatic.MSG_ERROR_DATA_ACCESS 
                                             ,"Error in the system to modify the doctor. Message: ".concat( dae.getMessage() ).concat( " - Cause: " ).concat( dae.getCause().toString() ) 
                                             , MsgTypesStatic.MSG_ERROR 
                                         );
@@ -129,7 +130,7 @@ public class DoctorController
             doctorService.deleteById( id );
 
         }catch( DataAccessException dae ){
-            responseBody = new ResponseUtil( "Ups! Have some problem with the server access. Please, try again in few minutes." 
+            responseBody = new ResponseUtil( MsgTypesStatic.MSG_ERROR_DATA_ACCESS 
                                             ,"Error in the system to delete the doctor. Message: ".concat( dae.getMessage() ).concat( " - Cause: " ).concat( dae.getCause().toString() ) 
                                             , MsgTypesStatic.MSG_ERROR 
                                         );

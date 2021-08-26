@@ -38,6 +38,7 @@ public class AppointmentController
         return appointmentService.findAll();
     }
 
+
     @GetMapping( path = UrlsStatic.URL_BASIC_OPTION_GET )
     public ResponseEntity< ResponseUtil > handlerAppointmentById( @PathVariable ( "id" ) Long id )
     {
@@ -60,8 +61,8 @@ public class AppointmentController
             responseBody = new ResponseUtil( "" , "" , MsgTypesStatic.MSG_SUCCESS , appointment );
 
         }catch( DataAccessException dae ){
-            responseBody = new ResponseUtil( "Ups! Have some problem with the server access. Please, try again in few minutes." 
-                                            ,"Error in the system to get appointment. Message: ".concat( dae.getMessage() ).concat( " - Cause: " ).concat( dae.getCause().toString() ) 
+            responseBody = new ResponseUtil( MsgTypesStatic.MSG_ERROR_DATA_ACCESS 
+                                            ,"Error in the system to get appointment. Message: ".concat( dae.getMessage() ).concat( " -  Cause: " ).concat( dae.getCause().toString() ) 
                                             , MsgTypesStatic.MSG_ERROR 
                                         );
             return ResponseEntity.status( HttpStatus.INTERNAL_SERVER_ERROR ).body( responseBody );
@@ -85,8 +86,8 @@ public class AppointmentController
             appointmentSaved = appointmentService.save( appointment );
 
         }catch( DataAccessException dae ){
-            responseBody = new ResponseUtil( "Ups! Have some problem with the server access. Please, try again in few minutes." 
-                                            ,"Error in the system to create appointment. Message: ".concat( dae.getMessage() ).concat( " - Cause: " ).concat( dae.getCause().toString() ) 
+            responseBody = new ResponseUtil( MsgTypesStatic.MSG_ERROR_DATA_ACCESS
+                                            ,"Error in the system to create appointment. Message: ".concat( dae.getMessage() ).concat( " -  Cause: " ).concat( dae.getCause().toString() ) 
                                             , MsgTypesStatic.MSG_ERROR 
                                         );
             return ResponseEntity.status( HttpStatus.INTERNAL_SERVER_ERROR ).body( responseBody );
@@ -97,6 +98,7 @@ public class AppointmentController
         responseBody = new ResponseUtil( msg , msg , MsgTypesStatic.MSG_SUCCESS , appointmentSaved );
         return  ResponseEntity.status( HttpStatus.CREATED ).body( responseBody );
     }
+
 
     @PutMapping()
     public ResponseEntity< ResponseUtil > handlerUpdateAppointment( @RequestBody Appointment appointment )
@@ -109,7 +111,7 @@ public class AppointmentController
             appointmentSaved = appointmentService.save( appointment );
 
         }catch( DataAccessException dae ){
-            responseBody = new ResponseUtil( "Ups! Have some problem with the server access. Please, try again in few minutes." 
+            responseBody = new ResponseUtil( MsgTypesStatic.MSG_ERROR_DATA_ACCESS
                                             ,"Error in the system to update appointment. Message: ".concat( dae.getMessage() ).concat( " - Cause: " ).concat( dae.getCause().toString() ) 
                                             , MsgTypesStatic.MSG_ERROR 
                                         );
@@ -121,6 +123,7 @@ public class AppointmentController
         return  ResponseEntity.status( HttpStatus.OK ).body( responseBody );
     }
 
+    
     @DeleteMapping( path = UrlsStatic.URL_BASIC_OPTION_DELETE )
     public ResponseEntity< ResponseUtil > handlerDeleteAppointment( @PathVariable ( "id" ) Long id )
     {
@@ -131,7 +134,7 @@ public class AppointmentController
             appointmentService.deleteById( id );
 
         }catch( DataAccessException dae ){
-            responseBody = new ResponseUtil( "Ups! Have some problem with the server access. Please, try again in few minutes." 
+            responseBody = new ResponseUtil( MsgTypesStatic.MSG_ERROR_DATA_ACCESS
                                             ,"Error in the system to delete appointment. Message: ".concat( dae.getMessage() ).concat( " - Cause: " ).concat( dae.getCause().toString() ) 
                                             , MsgTypesStatic.MSG_ERROR 
                                         );

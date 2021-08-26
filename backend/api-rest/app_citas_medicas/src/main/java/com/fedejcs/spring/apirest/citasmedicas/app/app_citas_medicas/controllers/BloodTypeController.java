@@ -38,6 +38,7 @@ public class BloodTypeController
         return bloodTypeService.findAll();
     }
 
+
     @GetMapping( path = UrlsStatic.URL_BASIC_OPTION_GET )
     public ResponseEntity< ResponseUtil >  handlerBloodTypeById( @PathVariable ( "id" ) Long id )
     {
@@ -58,8 +59,8 @@ public class BloodTypeController
             responseBody = new ResponseUtil( "" , "" , MsgTypesStatic.MSG_SUCCESS , bloodType );
 
         }catch( DataAccessException dae ){
-            responseBody = new ResponseUtil( "Ups! Have some problem with the server access. Please, try again in few minutes." 
-                                            ,"Error in the system to get blood type. Message: ".concat( dae.getMessage() ).concat( " - Cause: " ).concat( dae.getCause().toString() ) 
+            responseBody = new ResponseUtil( MsgTypesStatic.MSG_ERROR_DATA_ACCESS
+                                            ,"Error in the system to get blood type. Message: ".concat( dae.getMessage() ).concat( " -  Cause: " ).concat( dae.getCause().toString() ) 
                                             , MsgTypesStatic.MSG_ERROR 
                                         );
             return ResponseEntity.status( HttpStatus.INTERNAL_SERVER_ERROR ).body( responseBody );
@@ -69,8 +70,6 @@ public class BloodTypeController
         return  ResponseEntity.status( HttpStatus.OK ).body( responseBody );
     }
     
-
-
     /*=======================================================*/
     /*=============== 2 TRANSACTIONAL METHODS ===============*/
     /*=======================================================*/
@@ -86,8 +85,8 @@ public class BloodTypeController
             bloodTypeSave = bloodTypeService.save(bloodType);
             
         }catch( DataAccessException dae ){
-            responseBody = new ResponseUtil( "Ups! Have some problem with the server access. Please, try again in few minutes." 
-                                            ,"Error in the system to create blood type. Message: ".concat( dae.getMessage() ).concat( " - Cause: " ).concat( dae.getCause().toString() ) 
+            responseBody = new ResponseUtil( MsgTypesStatic.MSG_ERROR_DATA_ACCESS
+                                            ,"Error in the system to create blood type. Message: ".concat( dae.getMessage() ).concat( " -  Cause: " ).concat( dae.getCause().toString() ) 
                                             , MsgTypesStatic.MSG_ERROR 
                                         );
             return ResponseEntity.status( HttpStatus.INTERNAL_SERVER_ERROR ).body( responseBody );
@@ -97,6 +96,7 @@ public class BloodTypeController
         responseBody = new ResponseUtil( msg , msg , MsgTypesStatic.MSG_SUCCESS , bloodTypeSave );
         return  ResponseEntity.status( HttpStatus.CREATED ).body( responseBody );
     }
+
 
     @PutMapping( path = UrlsStatic.URL_BASIC_OPTION_UPDATE )
     public ResponseEntity< ResponseUtil > handlerUpdateBloodType( @RequestBody BloodType bloodType)
@@ -109,7 +109,7 @@ public class BloodTypeController
             bloodTypeSave = bloodTypeService.save(bloodType);
             
         }catch( DataAccessException dae ){
-            responseBody = new ResponseUtil( "Ups! Have some problem with the server access. Please, try again in few minutes." 
+            responseBody = new ResponseUtil( MsgTypesStatic.MSG_ERROR_DATA_ACCESS
                                             ,"Error in the system to modify blood type. Message: ".concat( dae.getMessage() ).concat( " - Cause: " ).concat( dae.getCause().toString() ) 
                                             , MsgTypesStatic.MSG_ERROR 
                                         );
@@ -121,6 +121,7 @@ public class BloodTypeController
         return  ResponseEntity.status( HttpStatus.OK ).body( responseBody );
     }
 
+
     @DeleteMapping( path = UrlsStatic.URL_BASIC_OPTION_DELETE )
     public ResponseEntity< ResponseUtil > handlerDeleteBloodType( @PathVariable ( "id" ) Long id )
     {
@@ -130,7 +131,7 @@ public class BloodTypeController
             bloodTypeService.deleteById( id) ;
             
         }catch( DataAccessException dae ){
-            responseBody = new ResponseUtil( "Ups! Have some problem with the server access. Please, try again in few minutes." 
+            responseBody = new ResponseUtil( MsgTypesStatic.MSG_ERROR_DATA_ACCESS
                                             ,"Error in the system to delete blood type. Message: ".concat( dae.getMessage() ).concat( " - Cause: " ).concat( dae.getCause().toString() ) 
                                             , MsgTypesStatic.MSG_ERROR 
                                         );
