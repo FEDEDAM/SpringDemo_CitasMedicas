@@ -24,8 +24,14 @@ public class UserTypeServiceImp implements IUserTypeService
 
     @Override
     @Transactional( readOnly = true )
-    public UserType findById(Long id) {
+    public UserType findById(Long id ) {
         return userTypeRepository.findById( id ).orElse( null );
+    }
+
+    @Override
+    @Transactional( readOnly = true )
+    public UserType findByName(String name ) {
+        return userTypeRepository.findByName( name );
     }
 
     @Override

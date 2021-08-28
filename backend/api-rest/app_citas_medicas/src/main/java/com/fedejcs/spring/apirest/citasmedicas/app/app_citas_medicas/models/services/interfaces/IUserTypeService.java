@@ -10,6 +10,8 @@ public interface IUserTypeService
 
     public UserType findById ( Long id );
 
+    public UserType findByName ( String name );
+
     public UserType save ( UserType type );
 
     public void deleteById ( Long id );  

@@ -19,13 +19,33 @@ public class UserServiceImp implements IUserService
     @Override
     @Transactional( readOnly = true )
     public List<User> findAll() {
-        return (List<User>) userRepository.findAll();
+        return userRepository.findAll();
     }
 
     @Override
     @Transactional( readOnly = true )
     public User findById(Long id) {
         return userRepository.findById( id ).orElse( null );
+    }
+
+    @Transactional( readOnly = true )
+    public User findByNick( String nick ) {
+        return userRepository.findByNick( nick );
+    }
+
+    @Transactional( readOnly = true )
+    public User findByNickOrEmail( String nick , String email ) {
+        return userRepository.findByNickOrEmail( nick , email );
+    }
+
+    @Transactional( readOnly = true )
+    public boolean existsByNick( String nick ){
+        return userRepository.existsByNick( nick );
+    }
+
+    @Transactional( readOnly = true )
+    public boolean existsByEmail( String email ){
+        return userRepository.existsByEmail( email );
     }
 
     @Override

@@ -31,7 +31,7 @@ public class AuthenticationUser implements UserDetails
 
     public static AuthenticationUser build( User user )
     {
-        List < GrantedAuthority > authoritiesUser = new ArrayList< GrantedAuthority >();
+        List < GrantedAuthority > authoritiesUser = new ArrayList<>();
         authoritiesUser.add( new SimpleGrantedAuthority( "ROL_".concat( user.getType().getName() ) ) );
         return new AuthenticationUser( 
                                      user.getNick()

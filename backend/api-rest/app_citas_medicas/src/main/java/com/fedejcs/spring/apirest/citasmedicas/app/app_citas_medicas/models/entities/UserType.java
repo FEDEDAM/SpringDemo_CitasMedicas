@@ -60,7 +60,7 @@ public class UserType  implements Serializable
     @PreUpdate
     private void preUpdate(){modifiedAt = new Date();}
 
-    UserStatus status = new UserStatus();
+    
 
     /*========================================================================================*/
     //------                   2) GETTERS , SETTERS & BUILDERS PATIENTS                 ------//

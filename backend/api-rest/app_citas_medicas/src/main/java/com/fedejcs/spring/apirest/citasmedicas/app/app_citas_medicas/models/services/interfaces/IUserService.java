@@ -10,7 +10,19 @@ public interface IUserService
 
     public User findById ( Long id );
 
+    public User findByNick( String nick );
+
+    public User findByNickOrEmail( String nick , String email );
+
+    public boolean existsByNick( String nick );
+
+    public boolean existsByEmail( String email );
+
     public User save ( User user );
 
     public void deleteById ( Long id );
+
+    
+
+    
 }

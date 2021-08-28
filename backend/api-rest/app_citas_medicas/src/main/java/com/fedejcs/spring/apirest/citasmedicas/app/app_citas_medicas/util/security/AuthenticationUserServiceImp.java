@@ -20,21 +20,21 @@ public class AuthenticationUserServiceImp implements UserDetailsService
     private Logger logger = LoggerFactory.getLogger( AuthenticationUserServiceImp.class );
 
     @Override
-    public UserDetails loadUserByUsername( String nickOrEmail ) 
+    public UserDetails loadUserByUsername( String nick ) 
         throws UsernameNotFoundException 
     {
-        User user = userDao.findByNickOrEmail( nickOrEmail );
+        User user = userDao.findByNick( nick );
 
         if( user == null ){
-            String msgLogger = "Error in authentication. Dont exists the user '".concat( nickOrEmail).concat( "' in the system." );
-            String msgException = "Error in authentication. Dont exists the user '".concat( nickOrEmail).concat( "' in the system." );
+            String msgLogger = "Error in authentication. Dont exists the user '".concat( nick) .concat( "' in the system." );
+            String msgException = "Error in authentication. Dont exists the user '".concat( nick ).concat( "' in the system." );
             logger.error( msgLogger );
             throw new UsernameNotFoundException( msgException );
         }
 
         if( user.getType() == null ){
-            String msgLogger = "Error to load the user. Dont assignament rol to the user'".concat( nickOrEmail).concat( "'" );
-            String msgException = "Error to load the user. Dont assignament rol to the user'".concat( nickOrEmail).concat( "'" );
+            String msgLogger = "Error to load the user. Dont assignament rol to the user'".concat( nick ).concat( "'" );
+            String msgException = "Error to load the user. Dont assignament rol to the user'".concat( nick ).concat( "'" );
             logger.error( msgLogger );
             throw new UsernameNotFoundException( msgException );
         } 

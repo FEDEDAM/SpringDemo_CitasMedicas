@@ -6,5 +6,5 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface IUserTypeDAO extends CrudRepository< UserType , Long >
 {
-    
+    public UserType findByName( String name );
 }
