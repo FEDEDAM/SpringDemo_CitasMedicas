@@ -10,4 +10,5 @@ public class AppCitasMedicasApplication {
 		SpringApplication.run(AppCitasMedicasApplication.class, args);
 	}
 
+
 }

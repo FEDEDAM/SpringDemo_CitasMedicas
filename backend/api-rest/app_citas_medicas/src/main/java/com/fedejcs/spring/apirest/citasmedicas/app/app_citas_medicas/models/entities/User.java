@@ -18,7 +18,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -49,13 +48,8 @@ public class User implements Serializable
     @Email
     private String email;
 
-    @NotEmpty
     private String name;
-    
-    @NotEmpty
     private String lastName;
-
-    @NotEmpty
     private String gender;
 
     @ManyToOne( fetch = FetchType.LAZY)
@@ -70,9 +64,10 @@ public class User implements Serializable
     @JoinColumn( name = "user_type_id" )
     private UserType type;
     
-    @NotNull
+
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern="yyyy-MM-dd")
+    @Column( nullable = true )
     private Date dateOfBirth;
 
 
@@ -96,6 +91,12 @@ public class User implements Serializable
     //------                   2) GETTERS , SETTERS & BUILDERS PATIENTS                 ------//
     /*========================================================================================*/
     public User(){/* Empty constructor */}
+    public User( String nick , String password , String email , UserType type ){
+        this.nick = nick;
+        this.password = password;
+        this.email = email;
+        this.type = type;
+    }
 
     public Long getId() {return this.id;}
     public void setId(Long id) {this.id = id;}
