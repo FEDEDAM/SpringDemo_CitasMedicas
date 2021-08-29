@@ -67,6 +67,7 @@ public class User implements Serializable
 
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern="yyyy-MM-dd")
+    @Column( nullable = true )
     private Date dateOfBirth;
 
 

@@ -25,10 +25,10 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-
 
 @RequestMapping( UrlsStatic.URL_BASE_AUTH )
 @RestController
@@ -46,12 +46,16 @@ public class AuthController
     @Autowired
     JWTProvider jwtProvider;
 
+    @Autowired
+    BCryptPasswordEncoder passwordEncoder;
+
     @PostMapping( UrlsStatic.URL_AUTH_REGISTER )
     public ResponseEntity< ResponseUtil > registerUser( @Valid @RequestBody  RegisterUser register , BindingResult bindingResult )
     {
         String msg; 
         ResponseUtil responseBody;
         User userRegister;
+        JWTDto jwtObj;
 
         if( bindingResult.hasErrors() ){
             msg = "Fail to register new user. Fields or email invalid";
@@ -59,29 +63,37 @@ public class AuthController
             return ResponseEntity.status( HttpStatus.BAD_REQUEST ).body( responseBody );
         }
         
-        try{
-
+        try
+        {
             if( userService.existsByNick( register.getUserName() ) ){
                 msg = "The user name specified already exists.";
                 responseBody = new ResponseUtil( msg , msg , MsgTypesStatic.MSG_ERROR );    
-                return ResponseEntity.status( HttpStatus.BAD_REQUEST ).body( responseBody );
+                return ResponseEntity.status( HttpStatus.CONFLICT ).body( responseBody );
             }
     
             if( userService.existsByEmail( register.getEmail() ) ){
                 msg = "The email specified already exists.";
                 responseBody = new ResponseUtil( msg , msg , MsgTypesStatic.MSG_ERROR );    
-                return ResponseEntity.status( HttpStatus.BAD_REQUEST ).body( responseBody );
+                return ResponseEntity.status( HttpStatus.CONFLICT ).body( responseBody );
             }
     
             UserType type = typeService.findByName( "USER" );
             User user = new User(
                                     register.getUserName(),  
-                                    register.getPassword(), 
+                                    passwordEncoder.encode( register.getPassword() ), 
                                     register.getEmail(), 
                                     type
             );
 
             userRegister = userService.save( user );
+
+            Authentication authentication = authManager.authenticate( new UsernamePasswordAuthenticationToken( userRegister.getNick() , register.getPassword() ));
+            SecurityContextHolder.getContext().setAuthentication( authentication );
+
+            String jwt = jwtProvider.generateJWT( authentication );
+            AuthenticationUser userAuth = ( AuthenticationUser ) authentication.getPrincipal();
+            
+            jwtObj = new JWTDto( jwt , userAuth.getUsername() , userAuth.getAuthorities() );
 
         }catch( DataAccessException dae){
             responseBody = new ResponseUtil( MsgTypesStatic.MSG_ERROR_DATA_ACCESS
@@ -92,7 +104,7 @@ public class AuthController
         }
 
         msg = "Congratulations! The register has been completed correctly!";
-        responseBody = new ResponseUtil( msg , msg , MsgTypesStatic.MSG_SUCCESS , userRegister );
+        responseBody = new ResponseUtil( msg , msg , MsgTypesStatic.MSG_SUCCESS , jwtObj );
         return ResponseEntity.status( HttpStatus.OK ).body( responseBody );
     }
 
